@@ -23,7 +23,7 @@ public:
         temp2=temp2->next;
        }
        ListNode* tail2=temp2;
-       for(int i=a;i<=b;i++){//2 se 5
+       for(int i=a;i<=b;i++){//3 se 4
         curr=curr->next;
        }
        tail2->next=curr;
