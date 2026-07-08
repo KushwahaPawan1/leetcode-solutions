@@ -10,10 +10,10 @@
  */
 class Solution {
 public:
-  ListNode* reverseList(ListNode* head) {
+    ListNode* reverseList(ListNode* head){
         ListNode* curr=head;
         ListNode* prev=NULL;
-        ListNode* Next=NULL;
+        ListNode* Next=head;
         while(curr){
             Next=curr->next;
             curr->next=prev;
@@ -21,28 +21,24 @@ public:
             curr=Next;
         }
         return prev;
-
     }
     bool isPalindrome(ListNode* head) {
-        ListNode* c=new ListNode(-1);
-        // deep copy of head
-        ListNode* temp=head;
-        ListNode* tempC=c;
-        while(temp){
-            ListNode* node=new ListNode(temp->val);
-            tempC->next=node;
-            temp=temp->next;
-            tempC=tempC->next;
+        ListNode* slow=head;
+        ListNode* fast=head;
+        while(fast->next!=NULL && fast->next->next!=NULL){
+            slow=slow->next;
+            fast=fast->next->next;
         }
-        c=c->next;
-        c=reverseList(c);
+        //slow is at left middle
+        ListNode* newHead=reverseList(slow->next);
         ListNode* a=head;
-        ListNode* b=c; 
-        while(a){
+        ListNode* b=newHead;
+        while(b){
             if(a->val!=b->val) return false;
             a=a->next;
             b=b->next;
         }
         return true;
+
     }
 };
