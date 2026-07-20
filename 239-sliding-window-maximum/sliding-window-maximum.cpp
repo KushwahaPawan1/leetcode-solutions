@@ -1,65 +1,43 @@
 class Solution {
 public:
-    vector<int> maxSlidingWindow(vector<int>& arr, int k) {
+    vector<int> maxSlidingWindow(vector<int>& nums, int k) {
 
-        int n = arr.size();
+        // Agar window size 1 hai to har element hi us window ka maximum hoga
+        if(k==1) return nums; 
 
-        // NGI = Next Greater Index
-        // ngi[i] = current element ke right me pehle greater element ka index
-        int ngi[n];
+        int n=nums.size();
 
-        stack<int> st;
+        // Deque me elements nahi, unke indices store honge
+        deque<int>dq;
 
-        // Last element ka koi next greater nahi hota
-        ngi[n - 1] = n;
-        st.push(n - 1);
+        // Final answer store karne ke liye
+        vector<int>ans;
 
-        // Right se Left traverse karke NGI array bana rahe hain
-        for (int i = n - 2; i >= 0; i--) {
+        // Array ko left se right traverse karo
+        for(int i=0;i<n;i++){
 
-            // Jab tak current element bada ya equal hai,
-            // chhote elements ko stack se hata do
-            while (st.size() > 0 && arr[st.top()] <= arr[i]) {
-                st.pop();
-            }
+            // Current element se chhote elements kabhi future window ka maximum
+            // nahi ban sakte, isliye unke indices remove kar do
+            while(dq.size()>0 && nums[i]>nums[dq.back()])
+                dq.pop_back();
 
-            // Agar stack empty ho gaya,
-            // matlab right me koi greater element nahi hai
-            if (st.size() == 0)
-                ngi[i] = n;
-            else
-                // Stack ka top hi next greater index hai
-                ngi[i] = st.top();
+            // Current element ka index deque me add karo
+            dq.push_back(i);
 
-            // Current index stack me push karo
-            st.push(i);
+            // Current window ka starting index
+            int j=i-k+1;
+
+            // Jo indices current window se bahar nikal gaye hain unhe hata do
+            while(dq.size()>0 && dq.front()<j)
+                dq.pop_front();
+
+            // Jab first complete window ban jaye tab answer store karo
+            // Deque ke front par hamesha current window ka maximum element hoga
+            if(i>=k-1)
+                ans.push_back(nums[dq.front()]);
         }
 
-        vector<int> ans;
-
-        // Har sliding window ke liye maximum nikalna hai
-        for (int i = 0; i <= n - k; i++) {
-
-            // Window ka start
-            int j = i;
-
-            // Initial maximum
-            int mx = arr[i];
-
-            // NGI ke through seedha next greater element par jump karenge
-            while (j < i + k) {
-
-                // Jis index par hain wahi current maximum hai
-                mx = arr[j];
-
-                // Next Greater Index par jump karo
-                j = ngi[j];
-            }
-
-            // Is window ka maximum answer me store karo
-            ans.push_back(mx);
-        }
-
+        // Sabhi windows ke maximum return kar do
         return ans;
     }
 };
