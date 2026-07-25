@@ -1,12 +1,15 @@
 class Solution {
 public:
 
-    // Ye function sirf un paths ko count karta hai
-    // jo current node se start hote hain.
-    void helper(TreeNode* root, long long sum, int& count){
+    // Ye function current node se start hone wale
+    // valid paths ki count return karta hai
+    int helper(TreeNode* root, long long sum){
 
-        // Agar node NULL hai to return
-        if(root == NULL) return;
+        // Agar node NULL hai to koi path nahi
+        if(root == NULL) return 0;
+
+        // Current node ki wajah se milne wale paths
+        int count = 0;
 
         // Agar current node ki value remaining sum ke equal hai
         // to ek valid path mil gaya
@@ -14,30 +17,26 @@ public:
             count++;
         }
 
-        // Left subtree me remaining sum ke saath search karo
-        helper(root->left, sum - (long long)root->val, count);
+        // Left subtree se milne wale valid paths add karo
+        count += helper(root->left, sum - (long long)root->val);
 
-        // Right subtree me remaining sum ke saath search karo
-        helper(root->right, sum - (long long)root->val, count);
+        // Right subtree se milne wale valid paths add karo
+        count += helper(root->right, sum - (long long)root->val);
+
+        return count;
     }
 
     int pathSum(TreeNode* root, int targetSum) {
 
-        // Empty tree me koi path nahi hoga
+        // Empty tree me koi path nahi
         if(root == NULL) return 0;
 
-        // Total valid paths count karega
-        int count = 0;
-
-        // Current node ko starting point maan kar
-        // saare downward paths check karo
-        helper(root, (long long)targetSum, count);
-
-        // Ab left subtree ke har node ko starting point banao
-        // aur right subtree ke har node ko bhi starting point banao
-        count += pathSum(root->left, targetSum)
-              +  pathSum(root->right, targetSum);
-
-        return count;
+        // Total paths =
+        // 1. Current node se start hone wale paths
+        // 2. Left subtree ke har node se start hone wale paths
+        // 3. Right subtree ke har node se start hone wale paths
+        return helper(root, (long long)targetSum)
+             + pathSum(root->left, targetSum)
+             + pathSum(root->right, targetSum);
     }
 };
