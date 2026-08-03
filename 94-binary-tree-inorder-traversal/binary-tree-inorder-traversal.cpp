@@ -1,24 +1,31 @@
-
 class Solution {
 public:
     vector<int> inorderTraversal(TreeNode* root) {
         vector<int>ans;
-        stack<TreeNode*> st;
-        TreeNode* node=root;
-        while(st.size()>0 || node!=NULL){
-            if(node!=NULL){
-                st.push(node);
-                node=node->left;
+        TreeNode* curr= root;
+        while(curr!=NULL){
+            if(curr->left!=NULL){//find the predecessor
+                TreeNode* pred=curr->left;
+                while(pred->right!=NULL && pred->right!=curr){
+                    pred=pred->right;
+                }
+                if(pred->right==NULL){//link kro ..farzi connection banao
+                    pred->right= curr;
+                    curr= curr->left;
+                }
+                else {//pred->right==curr : unlink
+                    pred->right= NULL;
+                    ans.push_back(curr->val);
+                    curr = curr->right;
+                }
             }
-            else{//node is null
-                 TreeNode* temp=st.top();
-                 st.pop();
-                 ans.push_back(temp->val);
-                 node=temp->right;
+            else {//curr->left==NULL
+                 //visit
+                 ans.push_back(curr->val);
+                 curr=curr->right;
             }
         }
-        return ans;
-
-
+    
+    return ans;
     }
 };
