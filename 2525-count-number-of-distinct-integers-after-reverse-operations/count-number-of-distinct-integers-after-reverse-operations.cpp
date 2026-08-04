@@ -1,14 +1,14 @@
 class Solution {
 public:
-    // Function to reverse a number
+    // Function to reverse a given integer
     int reverse(int n) {
         int r = 0;
 
         while (n > 0) {
-            // Make space for the next digit
+            // Shift existing digits one place to the left
             r *= 10;
 
-            // Add the last digit of n to r
+            // Append the last digit of n to r
             r += (n % 10);
 
             // Remove the last digit from n
@@ -21,28 +21,27 @@ public:
 
     int countDistinctIntegers(vector<int>& nums) {
 
-        // Store the original size because we'll keep adding new elements
+        // Store the original size of the vector
         int n = nums.size();
 
-        // Reverse every original number and append it to the vector
-        for (int i = 0; i < n; i++) {
-
-            // Get the reverse of the current number
-            int rev = reverse(nums[i]);
-
-            // Add the reversed number to the end of the vector
-            nums.push_back(rev);
-        }
-
-        // Unordered set stores only unique elements
+        // Unordered set to store only unique numbers
         unordered_set<int> s;
 
-        // Insert every element of the updated vector into the set
-        for (int i = 0; i < nums.size(); i++) {
-            s.insert(nums[i]);   // Duplicate values are ignored automatically
+        // Traverse all original elements
+        for (int i = 0; i < n; i++) {
+
+            // Reverse the current number
+            int rev = reverse(nums[i]);
+
+            // Insert the original number into the set
+            s.insert(nums[i]);
+
+            // Insert the reversed number into the set
+            // If it's already present, unordered_set ignores it
+            s.insert(rev);
         }
 
-        // Number of unique elements
+        // Return the total number of distinct integers
         return s.size();
     }
 };
