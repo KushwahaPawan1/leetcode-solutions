@@ -2,69 +2,43 @@ class Solution {
 public:
     bool isAnagram(string s, string t) {
 
-        // Agar dono strings ki length different hai,
-        // to wo kabhi anagram nahi ho sakti
-        if (s.length() != t.length())
-            return false;
+        // Agar length different hai to anagram possible hi nahi
+        if (s.length() != t.length()) return false;
 
         // map1 me string s ke har character ki frequency store hogi
-        // key   = character
-        // value = us character ki frequency
         unordered_map<char, int> map1;
 
-        // map2 me string t ke har character ki frequency store hogi
-        unordered_map<char, int> map2;
-
-
-        // String s ke har character ki frequency count karo
+        // String s ki frequency count karo
         for (int i = 0; i < s.length(); i++) {
-
-            // Agar character pehli baar aaya to value initially 0 hogi
-            // ++ karne ke baad 1 ho jayegi
-            // Agar already present hai to frequency 1 se increase hogi
             map1[s[i]]++;
         }
 
-
-        // String t ke har character ki frequency count karo
+        // String t ke har character ko process karo
         for (int i = 0; i < t.length(); i++) {
 
-            // Har character ki frequency map2 me store karo
-            map2[t[i]]++;
-        }
+            char ch = t[i];
 
+            // Agar character map me present hai
+            if (map1.find(ch) != map1.end()) {
 
-        // map1 ke har character aur uski frequency ko check karo
-        for (auto x : map1) {
+                // Frequency 1 se kam kar do
+                map1[ch]--;
 
-            // x.first me character/key milega
-            char ch1 = x.first;
-
-            // x.second me us character ki frequency milegi
-            int freq1 = x.second;
-
-
-            // Check karo ki same character map2 me present hai ya nahi
-            if (map2.find(ch1) != map2.end()) {
-
-                // map2 me same character ki frequency nikalo
-                int freq2 = map2[ch1];
-
-                // Agar dono strings me character ki frequency different hai
-                // to strings anagram nahi hain
-                if (freq1 != freq2)
-                    return false;
+                // Agar frequency 0 ho gayi to map se remove kar do
+                if (map1[ch] == 0)
+                    map1.erase(ch);
             }
 
-            // Agar character map2 me mila hi nahi,
-            // to strings anagram nahi hain
+            // Character mila hi nahi, matlab anagram nahi hai
             else {
                 return false;
             }
         }
 
-        // Saare characters ki frequency same mili
-        // isliye dono strings anagram hain
+        // Agar map empty hai to saari frequencies match ho gayi
+        if (map1.size() > 0)
+            return false;
+
         return true;
     }
 };
