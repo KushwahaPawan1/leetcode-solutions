@@ -1,3 +1,4 @@
 2651-calculate-delayed-arrival-time|Easy|1787077800000
 3471-find-the-largest-almost-missing-integer|Easy|1787077800000
 347-top-k-frequent-elements|Medium|1787164200000
+3622-check-divisibility-by-digit-sum-and-product|Easy|1787337000000
