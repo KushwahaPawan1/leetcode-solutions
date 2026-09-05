@@ -4,3 +4,4 @@
 3622-check-divisibility-by-digit-sum-and-product|Easy|1787337000000
 2620-counter|Easy|1787423400000
 3875-construct-uniform-parity-array-i|Easy|1788287400000
+3904-smallest-stable-index-ii|Medium|1788546600000
