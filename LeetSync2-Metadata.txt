@@ -9,3 +9,4 @@
 977-squares-of-a-sorted-array|Easy|1788633000000
 15-3sum|Medium|1788719400000
 3870-count-commas-in-range|Easy|1788805800000
+75-sort-colors|Medium|1788805800000
