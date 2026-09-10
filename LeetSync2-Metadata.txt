@@ -13,3 +13,4 @@
 3871-count-commas-in-range-ii|Medium|1788892200000
 209-minimum-size-subarray-sum|Medium|1788978600000
 904-fruit-into-baskets|Medium|1788978600000
+2265-count-nodes-equal-to-average-of-subtree|Medium|1788978600000
