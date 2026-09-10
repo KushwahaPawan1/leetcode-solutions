@@ -12,3 +12,4 @@
 75-sort-colors|Medium|1788805800000
 3871-count-commas-in-range-ii|Medium|1788892200000
 209-minimum-size-subarray-sum|Medium|1788978600000
+904-fruit-into-baskets|Medium|1788978600000
