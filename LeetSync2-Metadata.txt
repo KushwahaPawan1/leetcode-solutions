@@ -14,3 +14,4 @@
 209-minimum-size-subarray-sum|Medium|1788978600000
 904-fruit-into-baskets|Medium|1788978600000
 2265-count-nodes-equal-to-average-of-subtree|Medium|1788978600000
+3-longest-substring-without-repeating-characters|Medium|1789065000000
