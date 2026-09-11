@@ -16,3 +16,4 @@
 2265-count-nodes-equal-to-average-of-subtree|Medium|1788978600000
 3-longest-substring-without-repeating-characters|Medium|1789065000000
 3483-unique-3-digit-even-numbers|Easy|1789065000000
+424-longest-repeating-character-replacement|Medium|1789065000000
