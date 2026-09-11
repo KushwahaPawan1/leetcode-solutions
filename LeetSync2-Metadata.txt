@@ -15,3 +15,4 @@
 904-fruit-into-baskets|Medium|1788978600000
 2265-count-nodes-equal-to-average-of-subtree|Medium|1788978600000
 3-longest-substring-without-repeating-characters|Medium|1789065000000
+3483-unique-3-digit-even-numbers|Easy|1789065000000
