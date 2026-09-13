@@ -18,3 +18,4 @@
 3483-unique-3-digit-even-numbers|Easy|1789065000000
 424-longest-repeating-character-replacement|Medium|1789065000000
 76-minimum-window-substring|Hard|1789151400000
+202-happy-number|Easy|1789237800000
