@@ -19,3 +19,4 @@
 424-longest-repeating-character-replacement|Medium|1789065000000
 76-minimum-window-substring|Hard|1789151400000
 202-happy-number|Easy|1789237800000
+876-middle-of-the-linked-list|Easy|1789237800000
