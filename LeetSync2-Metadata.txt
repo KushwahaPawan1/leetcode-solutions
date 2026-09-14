@@ -21,3 +21,4 @@
 202-happy-number|Easy|1789237800000
 876-middle-of-the-linked-list|Easy|1789237800000
 53-maximum-subarray|Medium|1789324200000
+152-maximum-product-subarray|Medium|1789324200000
