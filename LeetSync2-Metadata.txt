@@ -22,3 +22,4 @@
 876-middle-of-the-linked-list|Easy|1789237800000
 53-maximum-subarray|Medium|1789324200000
 152-maximum-product-subarray|Medium|1789324200000
+1749-maximum-absolute-sum-of-any-subarray|Medium|1789324200000
