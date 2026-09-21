@@ -25,3 +25,4 @@
 1749-maximum-absolute-sum-of-any-subarray|Medium|1789324200000
 918-maximum-sum-circular-subarray|Medium|1789497000000
 724-find-pivot-index|Easy|1789583400000
+560-subarray-sum-equals-k|Medium|1789929000000
