@@ -26,3 +26,4 @@
 918-maximum-sum-circular-subarray|Medium|1789497000000
 724-find-pivot-index|Easy|1789583400000
 560-subarray-sum-equals-k|Medium|1789929000000
+56-merge-intervals|Medium|1790101800000
