@@ -28,3 +28,4 @@
 560-subarray-sum-equals-k|Medium|1789929000000
 56-merge-intervals|Medium|1790101800000
 986-interval-list-intersections|Medium|1790188200000
+3550-smallest-index-with-digit-sum-equal-to-index|Easy|1790188200000
