@@ -29,3 +29,4 @@
 56-merge-intervals|Medium|1790101800000
 986-interval-list-intersections|Medium|1790188200000
 3550-smallest-index-with-digit-sum-equal-to-index|Easy|1790188200000
+2406-divide-intervals-into-minimum-number-of-groups|Medium|1790361000000
