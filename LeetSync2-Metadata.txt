@@ -31,3 +31,4 @@
 3550-smallest-index-with-digit-sum-equal-to-index|Easy|1790188200000
 2406-divide-intervals-into-minimum-number-of-groups|Medium|1790361000000
 1047-remove-all-adjacent-duplicates-in-string|Easy|1790361000000
+20-valid-parentheses|Easy|1790447400000
