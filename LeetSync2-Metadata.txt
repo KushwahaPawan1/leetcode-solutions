@@ -34,3 +34,4 @@
 20-valid-parentheses|Easy|1790447400000
 1614-maximum-nesting-depth-of-the-parentheses|Easy|1790533800000
 739-daily-temperatures|Medium|1790706600000
+503-next-greater-element-ii|Medium|1790706600000
