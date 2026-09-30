@@ -33,3 +33,4 @@
 1047-remove-all-adjacent-duplicates-in-string|Easy|1790361000000
 20-valid-parentheses|Easy|1790447400000
 1614-maximum-nesting-depth-of-the-parentheses|Easy|1790533800000
+739-daily-temperatures|Medium|1790706600000
