@@ -2,42 +2,38 @@ class Solution {
 public:
     vector<int> nextGreaterElements(vector<int>& nums) {
         int n = nums.size();
-        vector<int> ans(n);     // answer array, size n (har ans[i] hum khud set karenge)
-        stack<int> st;          // stack me VALUES store hongi (index nahi)
-                                // stack ke andar hamesha "right side ke possible greater candidates" rahenge
+        vector<int> ans(n);     // answer array, har ans[i] hum khud set karenge
+        stack<int> st;          // stack me VALUES store hongi
 
-        // Circular array ko virtually do baar likha socho:
-        // [1,2,3,4,3 | 1,2,3,4,3]  -> total 2n elements
-        // Isliye i = 2n-1 se 0 tak right to left chal rahe hain
-        for (int i = 2 * n - 1; i >= 0; i--) {
+        // PHASE 1: Stack ko "circular wale elements" se pehle hi bhar do.
+        // Last element (n-1) ke baad circular me agla element nums[0], phir nums[1], ... aata h.
+        // Isliye nums[n-2] se nums[0] tak push karte hain, taaki
+        // stack ka top = nums[0], uske neeche nums[1], nums[2], ... (bottom me nums[n-2]).
+       
+        // Note: yahan pop nahi kar rahe, to stack monotonic nahi h, par order sahi h
+        for (int i = n - 2; i >= 0; i--) {
+            st.push(nums[i]);   // example [1,2,3,4,3]: stack (bottom->top) = 4,3,2,1
+        }
 
-            // i 0 se 2n-1 tak ja sakta h, par asli array me index 0 se n-1 hi hain.
-            // i % n se hume asli index mil jata h.
-            // Example n=5: i=7 -> idx=2, i=5 -> idx=0, i=4 -> idx=4
-            int idx = i % n;
+        // PHASE 2: Asli traversal, right se left (i = n-1 se 0)
+        for (int i = n - 1; i >= 0; i--) {
 
-            // Jab tak stack ka top current element se chhota ya barabar h,
-            // wo current ke liye "strictly greater" nahi ban sakta.
-            // Aur aage (left wale) elements ke liye bhi current hi behtar candidate h
-            // (kyunki current right me zyada paas h aur bada/barabar h), to isko pop kar do.
-            while (st.size() != 0 && st.top() <= nums[idx]) {
+            // Jab tak top <= current, wo "strictly greater" nahi h, pop kar do.
+            // Pop karna safe h, kyunki current (jo aage push hoga) us popped element se
+            // bada/barabar h aur circular order me usse pehle aata h,
+            // to left wale elements ke liye current hi behtar candidate rahega.
+            while (!st.empty() && st.top() <= nums[i]) {
                 st.pop();
             }
 
-            // Answer sirf tab store karna h jab hum pehli copy me ho (i < n).
-            // Doosri copy (i >= n) sirf stack ko "warm up" karne ke liye h,
-            // taaki circular wale elements (jo array ke start me hain) stack me pehle se aa jayein.
-            if (i < n) {
-                // Stack khaali nahi h => top hi nearest next greater element h
-                if (st.size() != 0) ans[idx] = st.top();
+            // Stack khaali => poore circular array me koi greater nahi, to -1
+            if (st.empty()) ans[i] = -1;
 
-                // Stack khaali h => poore circular array me koi greater nahi mila, to -1
-                else ans[idx] = -1;
-            }
+            // Warna top hi nearest next greater h (circular order me sabse paas wala)
+            else ans[i] = st.top();
 
-            // Current element ko push karo, ye left wale elements ke liye candidate banega.
-            // Doosri copy me bhi push hota h (sirf answer store nahi hota).
-            st.push(nums[idx]);
+            // Current ko push karo, ye left wale elements ke liye candidate banega
+            st.push(nums[i]);
         }
         return ans;
     }
