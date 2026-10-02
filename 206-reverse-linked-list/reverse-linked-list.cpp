@@ -10,19 +10,23 @@
  */
 class Solution {
 public:
-    //tc O(n)
-    //sc O(1)
     ListNode* reverseList(ListNode* head) {
-        ListNode* curr=head;
-        ListNode* prev=NULL;
-        ListNode* Next=NULL;
-        while(curr){
-            Next=curr->next;
-            curr->next=prev;
-            prev=curr;
-            curr=Next;
+        if(head==NULL) return NULL;
+        stack<ListNode*>st;
+        ListNode* temp=head;
+        while(temp){
+            st.push(temp);
+            temp=temp->next;
         }
-        return prev;
-
+        head=st.top();
+        st.pop();
+         temp=head;
+        while(!st.empty()){
+            temp->next=st.top();
+            st.pop();
+            temp=temp->next;
+        }
+        temp->next=NULL;
+        return head;
     }
 };
