@@ -40,3 +40,4 @@
 409-longest-palindrome|Easy|1791138600000
 206-reverse-linked-list|Easy|1791225000000
 24-swap-nodes-in-pairs|Medium|1791657000000
+25-reverse-nodes-in-k-group|Hard|1791657000000
