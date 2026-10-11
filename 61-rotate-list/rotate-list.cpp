@@ -1,38 +1,53 @@
-/**
- * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     ListNode *next;
- *     ListNode() : val(0), next(nullptr) {}
- *     ListNode(int x) : val(x), next(nullptr) {}
- *     ListNode(int x, ListNode *next) : val(x), next(next) {}
- * };
- */
 class Solution {
 public:
     ListNode* rotateRight(ListNode* head, int k) {
-        if(head==NULL || head->next==NULL) return head;
-        if(k==0) return head; // k=0 means as it is link list bhejo
-        ListNode* h=head;
-        ListNode* temp=head;
-        ListNode* tail=head;
-        int count =1;
-        while(tail->next!=NULL){
-            count++;
-            tail=tail->next;
+
+        // S-1: Edge cases handle karo
+        // List empty hai ya sirf ek node hai toh rotate karne ki zaroorat nahi
+        if(head == NULL || head->next == NULL)
+            return head;
+
+        ListNode* last = head;
+        int n = 1;
+
+        // S-2: Total nodes count karo aur last node tak jao
+        while(last->next != NULL) {
+            n++;
+            last = last->next;  // Last node par pahunch jao
         }
-        if(k>=count) k=k%count;
-        if(k==0) return head; // k=0 means as it is link list bhejo
-        //temp ko k-1 par rakho
-        for(int i=1; i<=count-k-1; i++){//2
-         temp=temp->next;
+
+        // S-3: Agar k, nodes ki length se bada hai,
+        // toh modulo se extra rotations remove kar do
+        k = k % n;
+
+        // Agar k = 0 hai, toh original list hi answer hai
+        if(k == 0)
+            return head;
+
+        // S-4: New tail find karo
+        // Right rotation mein last ke k nodes starting mein aayenge
+        // Isliye new tail ki position = n-k
+        ListNode* temp = head;
+
+        for(int i = 1; i < n-k; i++) {
+            temp = temp->next;
         }
-        //5 ko 1 se connect kro
-        tail->next=h;
-        //head abhi 1 pe h...head ko 4 pe lao i.e temp k next pe
-        h=temp->next;
-        //temp 3 pe tha ab usse null se attach kro cuz vo last node h 
-        temp->next=NULL;
-        return h;
+
+        // S-5: New head, new tail ke next node par hoga
+        // Example: 1 -> 2 -> 3 -> 4 -> 5
+        // New tail = 3, new head = 4
+        ListNode* newHead = temp->next;
+
+        // S-6: New tail ka link NULL kar do
+        // Ab first part ki list alag ho jayegi
+        temp->next = NULL;
+
+        // S-7: Original last node ko original head se connect karo
+        // Isse last ke k nodes beginning mein aa jayenge
+        ListNode* h = head;
+        last->next = h;
+
+        // S-8: Rotated list ka new head return karo
+        return newHead;
     }
 };
