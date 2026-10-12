@@ -42,3 +42,4 @@
 24-swap-nodes-in-pairs|Medium|1791657000000
 25-reverse-nodes-in-k-group|Hard|1791657000000
 61-rotate-list|Medium|1791657000000
+34-find-first-and-last-position-of-element-in-sorted-array|Medium|1791743400000
