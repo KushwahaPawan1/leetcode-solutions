@@ -46,3 +46,4 @@
 33-search-in-rotated-sorted-array|Medium|1792002600000
 2913-subarrays-distinct-element-sum-of-squares-i|Easy|1792002600000
 875-koko-eating-bananas|Medium|1792089000000
+74-search-a-2d-matrix|Medium|1792261800000
