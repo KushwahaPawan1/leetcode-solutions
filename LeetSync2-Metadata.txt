@@ -48,3 +48,4 @@
 875-koko-eating-bananas|Medium|1792089000000
 74-search-a-2d-matrix|Medium|1792261800000
 240-search-a-2d-matrix-ii|Medium|1792348200000
+378-kth-smallest-element-in-a-sorted-matrix|Medium|1792434600000
