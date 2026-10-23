@@ -51,3 +51,4 @@
 378-kth-smallest-element-in-a-sorted-matrix|Medium|1792434600000
 692-top-k-frequent-words|Medium|1792607400000
 1752-check-if-array-is-sorted-and-rotated|Easy|1792607400000
+1046-last-stone-weight|Easy|1792693800000
