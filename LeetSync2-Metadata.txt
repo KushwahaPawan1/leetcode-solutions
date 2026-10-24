@@ -52,3 +52,4 @@
 692-top-k-frequent-words|Medium|1792607400000
 1752-check-if-array-is-sorted-and-rotated|Easy|1792607400000
 1046-last-stone-weight|Easy|1792693800000
+502-ipo|Hard|1792780200000
