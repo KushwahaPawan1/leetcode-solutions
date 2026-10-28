@@ -53,3 +53,4 @@
 1752-check-if-array-is-sorted-and-rotated|Easy|1792607400000
 1046-last-stone-weight|Easy|1792693800000
 502-ipo|Hard|1792780200000
+23-merge-k-sorted-lists|Hard|1793125800000
