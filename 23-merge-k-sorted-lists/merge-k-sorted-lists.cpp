@@ -1,56 +1,41 @@
-/**
- * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     ListNode *next;
- *     ListNode() : val(0), next(nullptr) {}
- *     ListNode(int x) : val(x), next(nullptr) {}
- *     ListNode(int x, ListNode *next) : val(x), next(next) {}
- * };
- */
 class Solution {
 public:
+    ListNode* mergeKLists(vector<ListNode*>& lists) {
 
-    ListNode* merge(ListNode* a, ListNode* b) {
-        ListNode* tempA=a;
-        ListNode* tempB=b;
-        ListNode* c=new ListNode(-1);
-        ListNode* tempC=c;
-        while(tempA!=NULL && tempB!=NULL){
-            if(tempA->val<=tempB->val) {
-                ListNode* t=new ListNode(tempA->val);
-                tempC->next=t;
-                tempC=t;
-                tempA=tempA->next;
+        auto cmp = [](ListNode* a, ListNode* b) {
+            return a->val > b->val;
+        };
 
-            }
-            else{
-                 ListNode* t=new ListNode(tempB->val);
-                 tempC->next=t;
-                 tempC=t;
-                 tempB=tempB->next;
+        priority_queue<ListNode*, vector<ListNode*>, decltype(cmp)> pq(cmp);
+
+        // S-1: Har list ka first node heap me daalo
+        for (int i = 0; i < lists.size(); i++) {
+            if (lists[i] != NULL) {
+                pq.push(lists[i]);
             }
         }
-        //jab ek list khtm doosri list ke bache hue elements direct use kro
-        if(tempA==NULL){
-            tempC->next=tempB;
-        }
-        else{//tempB==NULL
-            tempC->next=tempA;
-        }
-        return c->next;
-    }
 
-    ListNode* mergeKLists(vector<ListNode*>& arr) {
-        if(arr.size()==0) return NULL;
-        while(arr.size()>1){
-            ListNode* a=arr[0];
-            arr.erase(arr.begin());//aage se delete hoga element
-            ListNode* b=arr[0];
-            arr.erase(arr.begin());
-            ListNode* c =merge(a,b);
-            arr.push_back(c);
+        // S-2: Dummy node banao
+        ListNode* dummy = new ListNode(-1);
+        ListNode* tail = dummy;
+
+        // S-3: Heap empty hone tak process karo
+        while (!pq.empty()) {
+
+            // Sabse chhota node nikalo
+            ListNode* node = pq.top();
+            pq.pop();
+
+            // Answer list me jodo
+            tail->next = node;
+            tail = tail->next;
+
+            // Usi list ka next node heap me daalo
+            if (node->next != NULL) {
+                pq.push(node->next);
+            }
         }
-        return arr[0];
+
+        return dummy->next;
     }
 };
