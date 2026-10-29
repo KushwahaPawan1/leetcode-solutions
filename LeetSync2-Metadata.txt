@@ -54,3 +54,4 @@
 1046-last-stone-weight|Easy|1792693800000
 502-ipo|Hard|1792780200000
 23-merge-k-sorted-lists|Hard|1793125800000
+621-task-scheduler|Medium|1793212200000
