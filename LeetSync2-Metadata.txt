@@ -55,3 +55,4 @@
 502-ipo|Hard|1792780200000
 23-merge-k-sorted-lists|Hard|1793125800000
 621-task-scheduler|Medium|1793212200000
+1296-divide-array-in-sets-of-k-consecutive-numbers|Medium|1795026600000
