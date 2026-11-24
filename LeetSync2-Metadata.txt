@@ -57,3 +57,4 @@
 621-task-scheduler|Medium|1793212200000
 1296-divide-array-in-sets-of-k-consecutive-numbers|Medium|1795026600000
 846-hand-of-straights|Medium|1795026600000
+3411-maximum-subarray-with-equal-products|Easy|1795458600000
